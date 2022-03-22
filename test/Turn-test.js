@@ -39,5 +39,13 @@ describe('Turn', function() {
     expect(turn.returnCard()).to.deep.equal(card);
   });
 
+  it('should be able to return true or false indicating if user\'s guess is correct or incorrect', function() {
+    const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
+    const turn1 = new Turn('object', card);
+    const turn2 = new Turn('array', card);
+    expect(turn1.evaluateGuess()).to.equal(true);
+    expect(turn2.evaluateGuess()).to.equal(false);
+  });
+
 
 });
