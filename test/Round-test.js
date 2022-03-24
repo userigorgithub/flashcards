@@ -57,10 +57,21 @@ describe('Round', () => {
     expect(round.turns).to.equal(1);
   });
 
+  // it('should update card after turn', () => {
+  //   expect(round.currentCard).to.equal(card1);
+  //   round.takeTurn('object');
+  //   expect(round.currentCard).to.equal(card2);
+  // });
+
   it('should tell if guess was correct or incorrect', () => {
-    expect(round.takeTurn('object')).to.equal("Correct!");
-    expect(round.takeTurn('function')).to.equal("Incorrect!");
+    expect(round.takeTurn('object')).to.equal('Correct!');
+    expect(round.takeTurn('function')).to.equal('Incorrect!');
   });
 
+  it('should calculate and return the percentage of correct guesses', () => {
+    round.takeTurn('object');
+    round.takeTurn('function');
+    expect(round.calculatePercentCorrect()).to.equal(50);
+  });
 
 });
