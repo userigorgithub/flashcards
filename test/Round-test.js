@@ -2,6 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const Card = require('../src/Card');
+const Turn = require('../src/Turn');
 const Deck = require('../src/Deck');
 const Round = require('../src/Round');
 
@@ -32,7 +33,7 @@ describe('Round', () => {
     expect(round).to.be.an.instanceof(Round);
   });
 
-  it('should have a cards in a deck', () => {
+  it('should have cards in a deck', () => {
     expect(round.deck).to.equal(deck);
   });
 
@@ -47,5 +48,13 @@ describe('Round', () => {
   it('should store incorrect guesses in an array via id', () => {
     expect(round.incorrectGuesses.length).to.equal(0);
   });
+
+  it('should be able to have a new turn instance and update turns count', () => {
+    round.takeTurn('object');
+    expect(round.currentTurn).to.be.an.instanceOf(Turn);
+    expect(round.turns).to.equal(1);
+  });
+
+  
 
 });
