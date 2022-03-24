@@ -38,6 +38,10 @@ describe('Round', () => {
 
   it('should have a current card being played', () => {
     expect(round.returnCurrentCard()).to.equal(card1);
-  })
+  });
+
+  it('should be able to have turns', () => {
+    expect(round.turns).to.equal(0);
+  });
 
 });
