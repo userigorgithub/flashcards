@@ -36,5 +36,8 @@ describe('Round', () => {
     expect(round.deck).to.equal(deck);
   });
 
+  it('should have a current card being played', () => {
+    expect(round.returnCurrentCard()).to.equal(card1);
+  })
 
 });
