@@ -74,4 +74,9 @@ describe('Round', () => {
     expect(round.calculatePercentCorrect()).to.equal(50);
   });
 
+  it('should print the message to the console with % of correct answers', () => {
+    round.takeTurn('object');
+    round.takeTurn('function');
+    expect(round.endRound()).to.equal(`** Round over! ** You answered ${round.calculatePercentCorrect()}% of the questions correctly!`)
+  });
 });
