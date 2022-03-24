@@ -44,4 +44,8 @@ describe('Round', () => {
     expect(round.turns).to.equal(0);
   });
 
+  it('should store incorrect guesses in an array via id', () => {
+    expect(round.incorrectGuesses.length).to.equal(0);
+  });
+
 });
