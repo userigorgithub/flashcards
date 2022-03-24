@@ -32,8 +32,9 @@ describe('Round', () => {
     expect(round).to.be.an.instanceof(Round);
   });
 
-  it('should have a card in deck', () => {
-    expect(round.deck.cards[0]).to.equal(card1);
+  it('should have a cards in a deck', () => {
+    expect(round.deck).to.equal(deck);
   });
+
 
 });
