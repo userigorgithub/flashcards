@@ -16,6 +16,10 @@ class Round {
   takeTurn(guess) {
     this.currentTurn = new Turn(guess, this.returnCurrentCard());
     this.turns++;
+    if (!this.currentTurn.evaluateGuess()) {
+      this.incorrectGuesses.push(this.currentCard.id);
+    }
+    return this.currentTurn.giveFeedback();
   }
 }
 

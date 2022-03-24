@@ -47,6 +47,8 @@ describe('Round', () => {
 
   it('should store incorrect guesses in an array via id', () => {
     expect(round.incorrectGuesses.length).to.equal(0);
+    round.takeTurn('function');
+    expect(round.incorrectGuesses.length).to.equal(1);
   });
 
   it('should be able to have a new turn instance and update turns count', () => {
@@ -55,6 +57,10 @@ describe('Round', () => {
     expect(round.turns).to.equal(1);
   });
 
-  
+  it('should tell if guess was correct or incorrect', () => {
+    expect(round.takeTurn('object')).to.equal("Correct!");
+    expect(round.takeTurn('function')).to.equal("Incorrect!");
+  });
+
 
 });
