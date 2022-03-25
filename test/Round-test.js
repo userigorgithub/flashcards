@@ -54,7 +54,7 @@ describe('Round', () => {
   it('should be able to have a new turn instance and update turns count', () => {
     expect(round.turns).to.equal(0);
     round.takeTurn('object');
-    expect(round.currentTurn).to.be.an.instanceOf(Turn);
+    expect(round.currentTurn).to.be.an.instanceof(Turn);
     expect(round.turns).to.equal(1);
   });
 
