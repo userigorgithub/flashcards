@@ -6,6 +6,7 @@ class Round {
     this.turns = 0;
     this.incorrectGuesses = [];
     this.currentTurn;
+    this.startTime;
   }
 
   returnCurrentCard() {
@@ -21,13 +22,21 @@ class Round {
     return this.currentTurn.giveFeedback();
   }
 
+  timer() {
+    this.startTime = Date.now();
+  }
+
+  checkTime() {
+    return Math.round((Date.now() - this.startTime) / 1000);
+  }
+
   calculatePercentCorrect() {
     return (100 - (this.incorrectGuesses.length / this.turns) * 100);
   }
 
   endRound() {
-    console.log(`** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`);
-    return `** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`;
+    console.log(`** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly and it took ${this.checkTime()} seconds!`);
+    return `** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly and it took ${this.checkTime()} seconds!`;
   }
 }
 
