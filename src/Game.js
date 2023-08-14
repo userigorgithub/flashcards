@@ -22,7 +22,7 @@ class Game {
     this.deck = deck;
     const round = new Round(deck);
     this.round = round;
-
+    this.round.timer();
     this.printMessage(deck, round);
     this.printQuestion(round);
   }

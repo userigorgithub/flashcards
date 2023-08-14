@@ -5,6 +5,7 @@ const Card = require('../src/Card');
 const Turn = require('../src/Turn');
 const Deck = require('../src/Deck');
 const Round = require('../src/Round');
+const Game = require('../src/Game');
 
 describe('Round', () => {
 
@@ -14,6 +15,7 @@ describe('Round', () => {
   let cards;
   let deck;
   let round;
+  let game;
 
   beforeEach(() => {
 
@@ -23,6 +25,7 @@ describe('Round', () => {
     cards = [card1, card2, card3];
     deck = new Deck(cards);
     round = new Round(deck);
+    game = new Game();
   });
 
   it('should be a function', () => {
@@ -69,6 +72,13 @@ describe('Round', () => {
     expect(round.takeTurn('function')).to.equal('Incorrect!');
   });
 
+  it("should time the round", () => {
+    expect(round.startTime).to.equal(undefined);
+    game.start();
+    game.round.endRound();
+    expect(game.round.startTime).to.be.above(0);
+  });
+
   it('should calculate and return the percentage of correct guesses', () => {
     round.takeTurn('object');
     round.takeTurn('function');
@@ -78,6 +88,6 @@ describe('Round', () => {
   it('should print the message to the console with % of correct answers', () => {
     round.takeTurn('object');
     round.takeTurn('function');
-    expect(round.endRound()).to.equal(`** Round over! ** You answered ${round.calculatePercentCorrect()}% of the questions correctly!`)
+    expect(round.endRound()).to.equal(`** Round over! ** You answered ${round.calculatePercentCorrect()}% of the questions correctly and it took NaN seconds!`)
   });
 });
