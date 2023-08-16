@@ -1,4 +1,7 @@
 const Turn = require('../src/Turn');
+const Deck = require('../src/Deck');
+const Game = require('../src/Game');
+const util = require('../src/util');
 
 class Round {
   constructor(deck) {
@@ -35,8 +38,23 @@ class Round {
   }
 
   endRound() {
-    console.log(`** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly and it took ${this.checkTime()} seconds!`);
-    return `** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly and it took ${this.checkTime()} seconds!`;
+    if (this.calculatePercentCorrect() >= 90) {
+      console.log(`** Round over! ** You answered ${Math.round(this.calculatePercentCorrect())}% of the questions correctly and it took ${this.checkTime()} seconds!`);
+      return `** Round over! ** You answered ${Math.round(this.calculatePercentCorrect())}% of the questions correctly and it took ${this.checkTime()} seconds!`;
+    } else {
+      return this.startAgain();
+    }
+  }
+
+  startAgain(deck, round) {
+    this.turns = 0;
+    this.incorrectGuesses = [];
+    this.returnCurrentCard();
+    util.main(this);
+    console.log(`Repeat round! You must score 90% or better.
+-----------------------------------------------------------------------`);
+    return `Repeat round! You must score 90% or better.
+-----------------------------------------------------------------------`;
   }
 }
 

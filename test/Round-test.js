@@ -6,6 +6,7 @@ const Turn = require('../src/Turn');
 const Deck = require('../src/Deck');
 const Round = require('../src/Round');
 const Game = require('../src/Game');
+const util = require('../src/util');
 
 describe('Round', () => {
 
@@ -73,10 +74,10 @@ describe('Round', () => {
   });
 
   it("should time the round", () => {
-    expect(round.startTime).to.equal(undefined);
-    game.start();
-    game.round.endRound();
-    expect(game.round.startTime).to.be.above(0);
+    expect(round.startTime).to.equal(0);
+    round.startAgain();
+    round.endRound();
+    expect(round.startTime).to.be.above(0);
   });
 
   it('should calculate and return the percentage of correct guesses', () => {
@@ -85,9 +86,16 @@ describe('Round', () => {
     expect(round.calculatePercentCorrect()).to.equal(50);
   });
 
-  it('should print the message to the console with % of correct answers', () => {
+  it('should print the message to the console with % of correct answers if 90% or more score is achieved', () => {
+    round.takeTurn('object');
+    round.takeTurn('array');
+    expect(round.endRound()).to.equal(`** Round over! ** You answered ${Math.round(round.calculatePercentCorrect())}% of the questions correctly and it took NaN seconds!`)
+  });
+
+  it('should print the message to the console if correct answers are below 90%', () => {
     round.takeTurn('object');
     round.takeTurn('function');
-    expect(round.endRound()).to.equal(`** Round over! ** You answered ${round.calculatePercentCorrect()}% of the questions correctly and it took NaN seconds!`)
+    expect(round.endRound()).to.equal(`Repeat round! You must score 90% or better.
+-----------------------------------------------------------------------`)
   });
 });
