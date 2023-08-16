@@ -74,10 +74,10 @@ describe('Round', () => {
   });
 
   it("should time the round", () => {
-    expect(round.startTime).to.equal(undefined);
-    game.start();
-    game.round.endRound();
-    expect(game.round.startTime).to.be.above(0);
+    expect(round.startTime).to.equal(0);
+    round.startAgain();
+    round.endRound();
+    expect(round.startTime).to.be.above(0);
   });
 
   it('should calculate and return the percentage of correct guesses', () => {
