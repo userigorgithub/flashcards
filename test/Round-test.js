@@ -5,8 +5,6 @@ const Card = require('../src/Card');
 const Turn = require('../src/Turn');
 const Deck = require('../src/Deck');
 const Round = require('../src/Round');
-// const Game = require('../src/Game');
-// const util = require('../src/util');
 
 describe('Round', () => {
 
@@ -16,7 +14,6 @@ describe('Round', () => {
   let cards;
   let deck;
   let round;
-  // let game;
 
   beforeEach(() => {
 
@@ -26,7 +23,6 @@ describe('Round', () => {
     cards = [card1, card2, card3];
     deck = new Deck(cards);
     round = new Round(deck);
-    // game = new Game();
   });
 
   it('should be a function', () => {
