@@ -73,11 +73,14 @@ describe('Round', () => {
     expect(round.takeTurn('function')).to.equal('Incorrect!');
   });
 
-  it("should time the round", () => {
-    expect(round.startTime).to.equal(0);
-    round.startAgain();
-    round.endRound();
-    expect(round.startTime).to.be.above(0);
+  it("should have a start time and end time of the round", () => {
+    expect(round.startTime).to.equal(undefined);
+    // round.startAgain();
+    // round.endRound();
+    round.timerStart();
+    expect(round.startTime).to.be.above(1692224586911);
+    round.timerEnd();
+    expect(round.endTime).to.be.above(1692224586989);
   });
 
   it('should calculate and return the percentage of correct guesses', () => {
@@ -89,6 +92,7 @@ describe('Round', () => {
   it('should print the message to the console with % of correct answers if 90% or more score is achieved', () => {
     round.takeTurn('object');
     round.takeTurn('array');
+    round.checkTime();
     expect(round.endRound()).to.equal(`** Round over! ** You answered ${Math.round(round.calculatePercentCorrect())}% of the questions correctly and it took NaN seconds!`)
   });
 

@@ -41,10 +41,10 @@ class Round {
     let timeInSeconds = (this.endTime - this.startTime) / 1000;
     let minutes = Math.round(timeInSeconds / 60);
     let seconds = Math.round(timeInSeconds % 60);
-    if (minutes === 0) {
-      return `${seconds} seconds`
-    } else {
+    if (minutes > 0) {
       return `${minutes} minute(s) and ${seconds} second(s)`
+    } else {
+      return `${seconds} seconds`
     }
   }
 
