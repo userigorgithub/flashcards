@@ -10,6 +10,7 @@ class Round {
     this.incorrectGuesses = [];
     this.currentTurn;
     this.startTime;
+    this.endTime;
   }
 
   returnCurrentCard() {
@@ -22,15 +23,29 @@ class Round {
     if (!this.currentTurn.evaluateGuess()) {
       this.incorrectGuesses.push(this.currentTurn.currentCard.id);
     }
+    if (!this.returnCurrentCard()) {
+      this.timerEnd();
+    }
     return this.currentTurn.giveFeedback();
   }
 
-  timer() {
+  timerStart() {
     this.startTime = Date.now();
   }
 
+  timerEnd() {
+    this.endTime = Date.now();
+  }
+
   checkTime() {
-    return Math.round((Date.now() - this.startTime) / 1000);
+    let timeInSeconds = (this.endTime - this.startTime) / 1000;
+    let minutes = Math.round(timeInSeconds / 60);
+    let seconds = Math.round(timeInSeconds % 60);
+    if (minutes === 0) {
+      return `${seconds} seconds`
+    } else {
+      return `${minutes} minute(s) and ${seconds} second(s)`
+    }
   }
 
   calculatePercentCorrect() {
@@ -39,8 +54,8 @@ class Round {
 
   endRound() {
     if (this.calculatePercentCorrect() >= 90) {
-      console.log(`** Round over! ** You answered ${Math.round(this.calculatePercentCorrect())}% of the questions correctly and it took ${this.checkTime()} seconds!`);
-      return `** Round over! ** You answered ${Math.round(this.calculatePercentCorrect())}% of the questions correctly and it took ${this.checkTime()} seconds!`;
+      console.log(`** Round over! ** You answered ${Math.round(this.calculatePercentCorrect())}% of the questions correctly and it took ${this.checkTime()}!`);
+      return `** Round over! ** You answered ${Math.round(this.calculatePercentCorrect())}% of the questions correctly and it took ${this.checkTime()}!`;
     } else {
       return this.startAgain();
     }
@@ -51,9 +66,9 @@ class Round {
     this.incorrectGuesses = [];
     this.returnCurrentCard();
     util.main(this);
-    console.log(`Repeat round! You must score 90% or better.
+    console.log(`Repeat round! You must score 90% or higher.
 -----------------------------------------------------------------------`);
-    return `Repeat round! You must score 90% or better.
+    return `Repeat round! You must score 90% or higher.
 -----------------------------------------------------------------------`;
   }
 }

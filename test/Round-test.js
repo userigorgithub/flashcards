@@ -5,8 +5,8 @@ const Card = require('../src/Card');
 const Turn = require('../src/Turn');
 const Deck = require('../src/Deck');
 const Round = require('../src/Round');
-const Game = require('../src/Game');
-const util = require('../src/util');
+// const Game = require('../src/Game');
+// const util = require('../src/util');
 
 describe('Round', () => {
 
@@ -16,7 +16,7 @@ describe('Round', () => {
   let cards;
   let deck;
   let round;
-  let game;
+  // let game;
 
   beforeEach(() => {
 
@@ -26,7 +26,7 @@ describe('Round', () => {
     cards = [card1, card2, card3];
     deck = new Deck(cards);
     round = new Round(deck);
-    game = new Game();
+    // game = new Game();
   });
 
   it('should be a function', () => {
@@ -95,7 +95,7 @@ describe('Round', () => {
   it('should print the message to the console if correct answers are below 90%', () => {
     round.takeTurn('object');
     round.takeTurn('function');
-    expect(round.endRound()).to.equal(`Repeat round! You must score 90% or better.
+    expect(round.endRound()).to.equal(`Repeat round! You must score 90% or higher.
 -----------------------------------------------------------------------`)
   });
 });
