@@ -39,8 +39,8 @@ class Round {
 
   endRound() {
     if (this.calculatePercentCorrect() >= 90) {
-      console.log(`** Round over! ** You answered ${this.calculatePercentCorrect().toFixed(2)}% of the questions correctly and it took ${this.checkTime()} seconds!`);
-      return `** Round over! ** You answered ${this.calculatePercentCorrect().toFixed(2)}% of the questions correctly and it took ${this.checkTime()} seconds!`;
+      console.log(`** Round over! ** You answered ${Math.round(this.calculatePercentCorrect())}% of the questions correctly and it took ${this.checkTime()} seconds!`);
+      return `** Round over! ** You answered ${Math.round(this.calculatePercentCorrect())}% of the questions correctly and it took ${this.checkTime()} seconds!`;
     } else {
       return this.startAgain();
     }
@@ -50,10 +50,10 @@ class Round {
     this.turns = 0;
     this.incorrectGuesses = [];
     this.returnCurrentCard();
-    console.log(`Repeat round! You must score 90% or better! You are playing with ${deck.countCards()} cards.
------------------------------------------------------------------------`);
     util.main(this);
-    return `Repeat round! You must score 90% or better! You are playing with ${deck.countCards()} cards.
+    console.log(`Repeat round! You must score 90% or better. You are playing with ${this.deck.countCards()} cards.
+-----------------------------------------------------------------------`);
+    return `Repeat round! You must score 90% or better. You are playing with ${this.deck.countCards()} cards.
 -----------------------------------------------------------------------`;
   }
 }
