@@ -75,12 +75,17 @@ describe('Round', () => {
 
   it("should have a start time and end time of the round", () => {
     expect(round.startTime).to.equal(undefined);
-    // round.startAgain();
-    // round.endRound();
     round.timerStart();
     expect(round.startTime).to.be.above(1692224586911);
     round.timerEnd();
     expect(round.endTime).to.be.above(1692224586989);
+  });
+
+  it("should calculate time in minutes and/or seconds it took to complete questions", () => {
+    round.startTime = 1692224586911;
+    round.endTime = 1692224798989;
+    round.checkTime();
+    expect(round.checkTime()).to.equal('4 minute(s) and 32 second(s)');
   });
 
   it('should calculate and return the percentage of correct guesses', () => {
