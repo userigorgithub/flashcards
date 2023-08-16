@@ -85,9 +85,9 @@ describe('Round', () => {
     expect(round.calculatePercentCorrect()).to.equal(50);
   });
 
-  it('should print the message to the console with % of correct answers', () => {
+  it('should print the message to the console with % of correct answers if 90% or more score is achieved', () => {
     round.takeTurn('object');
-    round.takeTurn('function');
-    expect(round.endRound()).to.equal(`** Round over! ** You answered ${round.calculatePercentCorrect()}% of the questions correctly and it took NaN seconds!`)
+    round.takeTurn('array');
+    expect(round.endRound()).to.equal(`** Round over! ** You answered ${Math.round(round.calculatePercentCorrect())}% of the questions correctly and it took NaN seconds!`)
   });
 });
