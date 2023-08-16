@@ -51,9 +51,9 @@ class Round {
     this.incorrectGuesses = [];
     this.returnCurrentCard();
     util.main(this);
-    console.log(`Repeat round! You must score 90% or better. You are playing with ${this.deck.countCards()} cards.
+    console.log(`Repeat round! You must score 90% or better.
 -----------------------------------------------------------------------`);
-    return `Repeat round! You must score 90% or better. You are playing with ${this.deck.countCards()} cards.
+    return `Repeat round! You must score 90% or better.
 -----------------------------------------------------------------------`;
   }
 }
