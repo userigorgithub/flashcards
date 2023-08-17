@@ -26,7 +26,7 @@ describe('Game', () => {
     cards = [card1, card2, card3];
     deck = new Deck(cards);
     round = new Round(deck);
-    game = new Game();
+    game = new Game(round);
   });
 
   it('should be a function', () => {

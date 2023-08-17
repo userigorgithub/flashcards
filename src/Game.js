@@ -24,8 +24,8 @@ class Game {
     // this.deck = deck;
     this.round = new Round(this.deck)
     // const round = new Round(deck);
-    // this.round = round;
-    
+    this.round = round;
+
     this.round.timerStart();
     this.printMessage(deck, round);
     this.printQuestion(round);
