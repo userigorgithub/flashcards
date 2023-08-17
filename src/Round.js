@@ -1,6 +1,4 @@
 const Turn = require('../src/Turn');
-const Deck = require('../src/Deck');
-const Game = require('../src/Game');
 const util = require('../src/util');
 
 class Round {
@@ -61,7 +59,7 @@ class Round {
     }
   }
 
-  startAgain(deck, round) {
+  startAgain() {
     this.turns = 0;
     this.incorrectGuesses = [];
     this.returnCurrentCard();

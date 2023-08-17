@@ -33,12 +33,12 @@ describe('Game', () => {
   });
 
   it('should be an instance of Game', () => {
-    expect(game).to.be.an.instanceof(Game);
+    expect(game).to.be.an.instanceOf(Game);
   });
 
   it('should store cards', () => {
     game.start();
-    expect(game.cards[1]).to.be.an.instanceof(Card);
+    expect(game.cards[0]).to.be.an.instanceOf(Card);
   });
 
   it('should create a new deck', () => {
