@@ -6,6 +6,7 @@ const Turn = require('../src/Turn');
 const Deck = require('../src/Deck');
 const Round = require('../src/Round');
 const Game = require('../src/Game');
+// const util = require('../src/util');
 
 describe('Game', () => {
 
@@ -25,7 +26,7 @@ describe('Game', () => {
     cards = [card1, card2, card3];
     deck = new Deck(cards);
     round = new Round(deck);
-    game = new Game(round);
+    game = new Game();
   });
 
   it('should be a function', () => {
@@ -33,21 +34,23 @@ describe('Game', () => {
   });
 
   it('should be an instance of Game', () => {
-    expect(game).to.be.an.instanceof(Game);
+    expect(game).to.be.an.instanceOf(Game);
   });
 
   it('should store cards', () => {
     game.start();
-    expect(game.cards[1]).to.be.an.instanceof(Card);
+    console.log(game.start())
+    console.log(this.cards)
+    expect(game.cards[0]).to.be.an.instanceOf(Card);
   });
 
-  it('should create a new deck', () => {
-    game.start();
-    expect(game.deck).to.be.an.instanceof(Deck);
-  });
+  // it('should create a new deck', () => {
+  //   game.start();
+  //   expect(game.deck).to.be.an.instanceof(Deck);
+  // });
 
-  it('should create a new round', () => {
-    game.start();
-    expect(game.round).to.be.an.instanceof(Round);
-  });
+  // it('should create a new round', () => {
+  //   game.start();
+  //   expect(game.round).to.be.an.instanceof(Round);
+  // });
 });

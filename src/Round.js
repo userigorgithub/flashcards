@@ -61,7 +61,7 @@ class Round {
     }
   }
 
-  startAgain(deck, round) {
+  startAgain() {
     this.turns = 0;
     this.incorrectGuesses = [];
     this.returnCurrentCard();

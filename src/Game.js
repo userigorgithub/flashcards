@@ -4,7 +4,7 @@ const util = require('./util');
 const Card = require('./Card');
 const Turn = require('./Turn');
 const Deck = require('./Deck');
-const Round = require('./Round');
+const Round = require('../src/Round');
 
 class Game {
   constructor() {
@@ -18,10 +18,14 @@ class Game {
       return new Card(card.id, card.question, card.answers, card.correctAnswer)
     });
     this.cards = cards;
-    const deck = new Deck(cards);
-    this.deck = deck;
-    const round = new Round(deck);
-    this.round = round;
+
+    this.deck = new Deck(cards)
+    // const deck = new Deck(cards);
+    // this.deck = deck;
+    this.round = new Round(this.deck)
+    // const round = new Round(deck);
+    // this.round = round;
+    
     this.round.timerStart();
     this.printMessage(deck, round);
     this.printQuestion(round);
